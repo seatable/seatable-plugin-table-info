@@ -6,7 +6,7 @@
 - 总的记录数
 - 协作人数目
 
-插件开发实例的代码很简单，你可以点击这个 github 链接获取源码 (https://github.com/seatable/seatable-plugin-table-info)。
+插件开发实例的代码很简单，你可以点击这个 [github链接](https://github.com/seatable/seatable-plugin-table-info) 获取源码
 
 插件开发流程如下。
 
@@ -163,7 +163,7 @@ render() {
 import TableInfo from './table-info';
 
 class App extends React.Component{
-  let tables = this.table.getTables();
+  let tables = this.dtable.getTables();
   render() {
     return (
       <Modal isOpen={showDialog} toggle={this.onPluginToggle} contentClassName="dtable-plugin plugin-container" size='lg'>
