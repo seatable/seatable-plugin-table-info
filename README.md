@@ -76,7 +76,7 @@ npm start
 
 /src/entry.js 与 Seatable 协同开发的入口文件
 
-/src/App.js 插件主要代码
+/src/app.js 插件主要代码
 
 ### 5. 显示表格基本信息
 
@@ -84,51 +84,6 @@ npm start
 
 ~~~jsx
 class TableInfo extends React.Component {
-
-  getTablesNumber = (tables) => {
-    return (tables && Array.isArray(tables)) ? tables.length : 0;
-  }
-
-  getRecords = (tables) => {
-    let recordsNumber = 0;
-    if (!tables) return recordsNumber;
-    for (let i = 0; i < tables.length; i++) {
-      const table = tables[i];
-      const rows = table.rows;
-      if (rows && Array.isArray(rows)) {
-        recordsNumber += rows.length;
-      }
-    }
-    return recordsNumber;
-  }
-
-  renderCollaborators = (collaborators) => {
-    if (!collaborators || !Array.isArray(collaborators)) {
-      return null;
-    }
-    return collaborators.map((collaborator, index) => {
-      return (
-        <div key={index} className="collaborator">
-          <span className="collaborator-avatar-container">
-            <img className="collaborator-avatar" alt='' src={collaborator.avatar_url}/>
-          </span>
-          <span className="collaborator-name">{collaborator.name}</span>
-        </div>
-      );
-    });
-  }
-
-  render() {
-    const { tables, collaborators } = this.props;
-    return (
-      <div>
-        <div>{'子表的个数: '}{this.getTablesNumber(tables)}</div><br/>
-        <div>{'总的记录数: '}{this.getRecords(tables)}</div><br/>
-        <div>{'协作人数量: '}{collaborators ? collaborators.length : 0}</div><br/>
-        <div className="plugin-collaborators">{this.renderCollaborators(collaborators)}</div>
-      </div>
-    );
-  }
 }
 
 const propTypes = {
@@ -136,29 +91,85 @@ const propTypes = {
   collaborators: PropTypes.array.isRequired,
 };
 
-TableInfo.defaultProps = {
-  tables: [],
-  collaborators: [],
-}
-
 TableInfo.propTypes = propTypes;
 
 export default TableInfo;
 ~~~
 
-在父组件 App.js 中调用 TableInfo 组件，并修改 App.js 中的 render 函数，传入 tables 和 collaborators。
+获取子表的个数
+
+~~~js
+getTablesNumber = (tables) => {
+  return (tables && Array.isArray(tables)) ? tables.length : 0;
+}
+~~~
+
+获取总的记录数
+
+~~~js
+getRecords = (tables) => {
+  let recordsNumber = 0;
+  if (!tables) return recordsNumber;
+  for (let i = 0; i < tables.length; i++) {
+    const table = tables[i];
+    const rows = table.rows;
+    if (rows && Array.isArray(rows)) {
+      recordsNumber += rows.length;
+    }
+  }
+  return recordsNumber;
+}
+~~~
+
+获取协作人及数量
+
+~~~jsx
+renderCollaborators = (collaborators) => {
+  if (!collaborators || !Array.isArray(collaborators)) {
+    return null;
+  }
+  return collaborators.map((collaborator, index) => {
+    return (
+      <div key={index} className="collaborator">
+        <span className="collaborator-avatar-container">
+          <img className="collaborator-avatar" alt='' src={collaborator.avatar_url}/>
+        </span>
+        <span className="collaborator-name">{collaborator.name}</span>
+      </div>
+    );
+  });
+}
+~~~
+
+界面渲染：子表的个数、总的记录数、协作人数目
+
+~~~jsx
+render() {
+  const { tables, collaborators } = this.props;
+  return (
+    <div>
+      <div>{'子表的个数: '}{this.getTablesNumber(tables)}</div><br/>
+      <div>{'总的记录数: '}{this.getRecords(tables)}</div><br/>
+      <div>{'协作人数量: '}{collaborators ? collaborators.length : 0}</div><br/>
+      <div className="plugin-collaborators">{this.renderCollaborators(collaborators)}</div>
+    </div>
+  );
+}
+~~~
+
+在父组件 app.js 中调用 TableInfo 组件，并修改 app.js 中的 render 函数，传入 tables 和 collaborators。
 
 ~~~jsx
 import TableInfo from './table-info';
 
 class App extends React.Component{
+  let tables = this.table.getTables();
   render() {
-    let tables = dtableStore.value.tables;
     return (
       <Modal isOpen={showDialog} toggle={this.onPluginToggle} contentClassName="dtable-plugin plugin-container" size='lg'>
         <ModalHeader className="test-plugin-header" toggle={this.onPluginToggle}>{'插件'}</ModalHeader>
         <ModalBody className="test-plugin-content">
-          <TableInfo tables={tables} collaborators={collaborators}/>
+          <TableInfo tables={tables} collaborators={window.app.collaborators}/>
         </ModalBody>
       </Modal>
     );
@@ -166,9 +177,9 @@ class App extends React.Component{
 }
 ~~~
 
-新增 /css/table-info.css 文件，修改插件的样式。
+增加 css/table-info.css 文件，修改插件的样式。
 
-即可在浏览器上 localhost: 3000 看到下面的信息。
+再次运行 `npm start `，即可在浏览器上 localhost: 3000 看到下面的信息。
 
 ~~~md
 子表的个数: X
@@ -178,6 +189,6 @@ class App extends React.Component{
 
 ## 5. 打包上传插件
 
-1. 执行 npm run build-plugin 打包插件，打包后插件的路径为 /plugin/task.zip 
+1. 执行 `npm run build-plugin` 打包插件，打包后插件的路径为 /plugin/task.zip 
 
-2. 上传插件到 dtable 中
+2. 将插件 task.zip 上传到 dtable 中

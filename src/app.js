@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import DTable from 'dtable-sdk';
 import TableInfo from './table-info';
-
 import './css/plugin-layout.css';
 
 const propTypes = {
@@ -79,16 +78,12 @@ class App extends React.Component {
     if (isLoading) {
       return '';
     }
-
-    let { collaborators } = window.app;
-    let dtableStore = this.dtable.dtableStore;
-    let tables = dtableStore.value.tables;
-    
+    let tables = this.dtable.getTables();
     return (
-      <Modal isOpen={showDialog} toggle={this.onPluginToggle} contentClassName="dtable-plugin plugin-container" size='lg'>
+      <Modal isOpen={showDialog} toggle={this.onPluginToggle} className="dtable-plugin plugin-container" size='lg'>
         <ModalHeader className="test-plugin-header" toggle={this.onPluginToggle}>{'插件'}</ModalHeader>
         <ModalBody className="test-plugin-content">
-          <TableInfo tables={tables} collaborators={collaborators} />
+          <TableInfo tables={tables} collaborators={window.app.collaborators}/>
         </ModalBody>
       </Modal>
     );
