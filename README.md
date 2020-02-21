@@ -76,7 +76,7 @@ npm start
 
 /src/index.js 本地开发插件的入口文件
 
-/src/entry.js 与 Seatable 协同开发的入口文件
+/src/entry.js 按照到 SeaTable 后作为插件运行时的入口文件
 
 /src/app.js 插件主要代码
 
