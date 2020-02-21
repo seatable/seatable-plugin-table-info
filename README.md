@@ -68,7 +68,9 @@ const config = {
 npm start
 ~~~
 
-在浏览器上打开 localhost:3000 可以看到插件对话框已经打开，对话框中默认显示 dtable-value 和 dtable-collaborators 信息
+在浏览器上打开 localhost:3000 可以看到插件对话框已经打开，对话框中默认显示通过dtable-sdk组件库提供的接口函数
+1. (getTables)获取的dtable表格的子表信息
+2. (getRelatedUsers)获取的dtable协作人的详细信息
 
 主要代码及用途
 
