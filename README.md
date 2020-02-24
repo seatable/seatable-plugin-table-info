@@ -166,12 +166,13 @@ import TableInfo from './table-info';
 
 class App extends React.Component{
   let tables = this.dtable.getTables();
+  let collaborators = this.dtable.getRelatedUsers();
   render() {
     return (
       <Modal isOpen={showDialog} toggle={this.onPluginToggle} contentClassName="dtable-plugin plugin-container" size='lg'>
         <ModalHeader className="test-plugin-header" toggle={this.onPluginToggle}>{'插件'}</ModalHeader>
         <ModalBody className="test-plugin-content">
-          <TableInfo tables={tables} collaborators={window.app.collaborators}/>
+          <TableInfo tables={tables} collaborators={collaborators}/>
         </ModalBody>
       </Modal>
     );
