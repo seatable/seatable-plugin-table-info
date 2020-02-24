@@ -1,6 +1,6 @@
 {
-  "name": "xxx",
-  "version": "xxx",
-  "display_name": "xxx",
-  "description": "xxx"
+  "name": "table-info",
+  "version": "1.0.0",
+  "display_name": "Table information",
+  "description": "Show a table's basic information"
 }

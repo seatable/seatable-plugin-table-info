@@ -33,8 +33,6 @@ class App extends React.Component {
       // local develop
       window.app = {};
       await this.dtable.init(window.dtablePluginConfig);
-      let res = await this.initPluginRelatedUsers(this.dtable.dtableStore);
-      window.app.collaborators = res.data.user_list;
       this.dtable.subscribe('dtable-connect', () => { this.onDTableConnect(); });
       this.dtable.subscribe('remote-data-changed', () => { this.onDTableChanged(); });
       await this.dtable.syncWithServer();
@@ -42,16 +40,10 @@ class App extends React.Component {
     } else {
       // integrated to dtable app
       this.dtable.initInBrowser(window.app.dtableStore);
-      let res = await this.initPluginRelatedUsers(this.dtable.dtableStore);
-      window.app.collaborators = res.data.user_list;
       this.dtable.subscribe('remote-data-changed', () => { this.onDTableChanged(); });
       await this.dtable.init(window.dtablePluginConfig);
       this.resetData();
     }
-  }
-  
-  async initPluginRelatedUsers(dtableStore) {
-    return dtableStore.dtableAPI.getTableRelatedUsers();
   }
 
   onDTableConnect = () => {
@@ -79,11 +71,12 @@ class App extends React.Component {
       return '';
     }
     let tables = this.dtable.getTables();
+    let collaborators = this.dtable.getRelatedUsers();
     return (
       <Modal isOpen={showDialog} toggle={this.onPluginToggle} className="dtable-plugin plugin-container" size='lg'>
         <ModalHeader className="test-plugin-header" toggle={this.onPluginToggle}>{'插件'}</ModalHeader>
         <ModalBody className="test-plugin-content">
-          <TableInfo tables={tables} collaborators={window.app.collaborators}/>
+          <TableInfo tables={tables} collaborators={collaborators}/>
         </ModalBody>
       </Modal>
     );

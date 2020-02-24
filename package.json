@@ -11,7 +11,7 @@
   },
   "homepage": "https://github.com/seatable/seatable-plugin-table-info#readme",
   "dependencies": {
-    "dtable-sdk": "0.0.15",
+    "dtable-sdk": "0.0.16",
     "jszip": "^3.2.2",
     "moment": "^2.24.0",
     "react": "^16.12.0",
