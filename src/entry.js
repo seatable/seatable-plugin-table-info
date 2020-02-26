@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import fs from 'fs';
 import App from './app'
 
 class TaskList {
