@@ -44,8 +44,16 @@ npm install
 
 - 在 plugin-config 文件夹中添加自定义的 icon.png 作为插件的图标（可不提供，采用默认图标。icon.png 要求是 128x128 像素)
 - 在 plugin-config 文件夹中添加自定义的 card_image.png 作为插件图标的背景图（可不提供，显示默认背景。card_image.png 要求是 560x240 像素)
+  
+### 3. 修改entry.js文件中的插件注册函数 
 
-### 3. 修改插件开发配置文件
+```
+  更新 window.app.registerPluginItemCallback('test', TaskList.execute);
+  ⬇️
+  为： window.app.registerPluginItemCallback(name, TaskList.execute);  此处的name 值为plugin-config/info.json中的“name”值
+```
+
+### 4. 修改插件开发配置文件
 
 修改 src 文件夹中的 settings.js 配置文件，配置文件用于本地开发获取 dtable 数据。
 
@@ -60,7 +68,7 @@ const config = {
 ```
 
 
-### 4. 开始开发
+### 5. 开始开发
 
 运行本地开发环境
 
@@ -80,7 +88,7 @@ npm start
 
 /src/app.js 插件主要代码
 
-### 5. 显示表格基本信息
+### 6. 显示表格基本信息
 
 写一个 TableInfo 的组件，这个组件需要传入 tables 和 collaborators 两个 Props
 
@@ -190,7 +198,7 @@ class App extends React.Component{
 协作人数量: X
 ~~~
 
-## 5. 打包上传插件
+## 7. 打包上传插件
 
 1. 执行 `npm run build-plugin` 打包插件，打包后插件的路径为 /plugin/task.zip 
 
