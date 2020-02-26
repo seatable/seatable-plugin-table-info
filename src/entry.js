@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import fs from 'fs';
 import App from './app'
 
 class TaskList {
@@ -13,4 +14,4 @@ class TaskList {
 
 export default TaskList;
 
-window.app.registerPluginItemCallback('test', TaskList.execute);
+window.app.registerPluginItemCallback('table-info', TaskList.execute);
