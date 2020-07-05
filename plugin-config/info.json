@@ -1,6 +1,16 @@
 {
   "name": "table-info",
-  "version": "1.0.2",
-  "display_name": "Table information",
-  "description": "Show a table's basic information"
+  "version": "1.0.3",
+  "display_name": {
+    "de": "Tabelleninformationen",
+    "en": "Table information",
+    "fr": "Informations sur le tableau",
+    "zh-cn": "表格信息"
+  },
+  "description": {
+    "de": "Zeigen Sie die grundlegenden Informationen einer Tabelle an",
+    "en":  "Show a table's basic information",
+    "fr": "Afficher les informations de base d'une table",
+    "zh-cn": "显示表格的基本信息"
+  }
 }
