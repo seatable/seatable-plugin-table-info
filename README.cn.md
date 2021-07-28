@@ -12,22 +12,25 @@
 
 ## 插件开发基本流程
 
-### 1. 克隆插件开发模板
+### 1. 安装插件开发脚手架
 
-克隆插件开发模板（ seatable-plugin-template）到本地
+```bash
+npm install -g create-dtable-plugin
+```
+### 2. 通过脚手架创建插件
 
-~~~bash
-git clone https://github.com/seatable/seatable-plugin-template.git
-~~~
+```bash
+create-dtable-plugin init seatable-plugin-table-info
+```
 
 安装依赖
 
 ~~~bash
-cd seatable-plugin-template
+cd seatable-plugin-table-info
 npm install
 ~~~
 
-### 2. 修改插件配置
+### 3. 修改插件配置
 
 修改 plugin-config 文件夹中 info.json 配置文件
 
@@ -45,17 +48,18 @@ npm install
 - 在 plugin-config 文件夹中添加自定义的 icon.png 作为插件的图标（可不提供，采用默认图标。icon.png 要求是 128x128 像素)
 - 在 plugin-config 文件夹中添加自定义的 card_image.png 作为插件图标的背景图（可不提供，显示默认背景。card_image.png 要求是 560x240 像素)
   
-### 3. 修改entry.js文件中的插件注册函数 
+### 4. 修改entry.js文件中的插件注册函数 
 
 ```
   更新 window.app.registerPluginItemCallback('test', TaskList.execute);
   ⬇️
-  为： window.app.registerPluginItemCallback(name, TaskList.execute);  此处的name 值为plugin-config/info.json中的“name”值
+  为： window.app.registerPluginItemCallback(name, TaskList.execute);  此处的name 值为plugin-config/info.json中的 “name” 值
 ```
 
-### 4. 修改插件开发配置文件
+### 5. 添加插件开发配置文件
 
-修改 src 文件夹中的 settings.js 配置文件，配置文件用于本地开发获取 dtable 数据。
+在项目 src 文件夹夹中有一个文件 setting.local.dist.js, 将其 copy 一份 并命名为 setting.local.js
+文件内容如下, 按照注释进行修改即可
 
 ```js
 const config = {
@@ -68,7 +72,7 @@ const config = {
 ```
 
 
-### 5. 开始开发
+### 6. 开始开发
 
 运行本地开发环境
 
@@ -76,7 +80,7 @@ const config = {
 npm start
 ~~~
 
-在浏览器上打开 localhost:3000 可以看到插件对话框已经打开，对话框中默认显示通过dtable-sdk组件库提供的接口函数
+在浏览器上打开 localhost:3000 可以看到插件对话框已经打开，对话框中默认显示通过 dtable-sdk 组件库提供的接口函数
 1. (getTables)获取的dtable表格的子表信息
 2. (getRelatedUsers)获取的dtable协作人的详细信息
 
@@ -88,7 +92,7 @@ npm start
 
 /src/app.js 插件主要代码
 
-### 6. 显示表格基本信息
+### 7. 显示表格基本信息
 
 写一个 TableInfo 的组件，这个组件需要传入 tables 和 collaborators 两个 Props
 
@@ -198,7 +202,7 @@ class App extends React.Component{
 协作人数量: X
 ~~~
 
-## 7. 打包上传插件
+## 8. 打包上传插件
 
 1. 执行 `npm run build-plugin` 打包插件，打包后插件的路径为 /plugin/task.zip 
 

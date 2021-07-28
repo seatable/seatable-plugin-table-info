@@ -12,24 +12,25 @@ The plug-in development process is as follows.
 
 ## Basic process of plugin development
 
-## Basic process of plugin development
+### 1. Install plugin development scaffolding
 
-### 1. Clone plugin development template
+```bash
+npm install -g create-dtable-plugin
+```
+### 2. Create plugins through scaffolding
 
-Clone the plug-in development template (seatable-plugin-template) to the local
-
-~~~bash
-git clone https://github.com/seatable/seatable-plugin-template.git
-~~~
+```bash
+create-dtable-plugin init seatable-plugin-table-info
+```
 
 Install dependencies
 
 ~~~bash
-cd seatable-plugin-template
+cd seatable-plugin-table-info
 npm install
 ~~~
 
-### 2. Modify plugin configuration
+### 3. Modify plugin configuration
 
 Modify the info.json configuration file in the plugin-config folder
 
@@ -47,7 +48,7 @@ Optional operation
 - Add a custom icon.png as the icon of the plugin in the plugin-config folder.
 - Add custom card_image.png as the background image of the plugin icon in the plugin-config folder (not provided, the default background is displayed. card_image.png requires 560x240 pixels)
 
-### 3. Modify plugin registration function in entry.js file
+### 4. Modify plugin registration function in entry.js file
 
 ```
   Update window.app.registerPluginItemCallback ('test', TaskList.execute);
@@ -55,9 +56,10 @@ Optional operation
   To: window.app.registerPluginItemCallback (name, TaskList.execute); where the value of name is the value of "name" in plugin-config / info.json
 ```
 
-### 4. Modify the plugin development configuration file
+### 5. Add plugin development configuration file
 
-Modify the settings.js configuration file in the src folder. The configuration file is used for local development to obtain dtable data.
+There is a file setting.local.dist.js in the project src folder, copy it and name it setting.local.js
+The content of the file is as follows, and you can modify it according to the comments
 
 ```js
 const config = {
@@ -69,7 +71,7 @@ const config = {
 };
 ```
 
-### 5. Start development
+### 6. Start development
 
 Run the local development environment
 
@@ -91,7 +93,7 @@ The main code and purpose
 /src/app.js plugin main code
 
 
-### 6. Display basic table information
+### 7. Display basic table information
 
 Write a TableInfo component. This component needs to be passed in tables and collaborators.
 
@@ -201,7 +203,7 @@ Total records: XXX
 Number of collaborators: X
 ~~~
 
-## 7. Package upload plugin
+## 8. Package upload plugin
 
 1. Run `npm run build-plugin` to package the plugin. The package path after packaging is /plugin/task.zip
 2. Upload the plugin task.zip to dtable
