@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import DTable from 'dtable-sdk';
 import TableInfo from './table-info';
-import './css/plugin-layout.css';
+import './assets/css/plugin-layout.css';
 
 const propTypes = {
   showDialog: PropTypes.bool

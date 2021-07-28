@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './css/table-info.css';
+import './assets/css/table-info.css';
 
 class TableInfo extends React.Component {
 
