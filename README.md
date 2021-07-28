@@ -12,7 +12,7 @@ The plug-in development process is as follows.
 
 ## Basic process of plugin development
 
-### 1. Install plugin development scaffolding
+### 1. Install plugin development tool
 
 ```bash
 npm install -g create-dtable-plugin
