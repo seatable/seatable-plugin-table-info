@@ -17,7 +17,7 @@ The plug-in development process is as follows.
 ```bash
 npm install -g create-dtable-plugin
 ```
-### 2. Create plugins through scaffolding
+### 2. Create plugin
 
 ```bash
 create-dtable-plugin init seatable-plugin-table-info
