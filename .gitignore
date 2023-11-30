@@ -20,5 +20,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+./src/setting.local.js
+
 # plugin-zip
 /plugin-zip
