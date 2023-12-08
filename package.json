@@ -1,6 +1,6 @@
 {
   "name": "seatable-plugin-table-info",
-  "version": "0.0.2",
+  "version": "1.0.4",
   "description": "In this guide, we will show step by step how to write a SeaTable plugin.",
   "repository": {
     "type": "git",
@@ -58,11 +58,9 @@
     "eslint": "^6.6.0",
     "eslint-config-react-app": "^5.2.0",
     "eslint-loader": "3.0.3",
-    "eslint-plugin-flowtype": "4.6.0",
     "eslint-plugin-import": "2.20.0",
     "eslint-plugin-jsx-a11y": "6.2.3",
     "eslint-plugin-react": "7.18.0",
-    "eslint-plugin-react-hooks": "^1.6.1",
     "file-loader": "4.3.0",
     "fs-extra": "^8.1.0",
     "html-webpack-plugin": "4.0.0-beta.11",
