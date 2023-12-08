@@ -1,7 +1,7 @@
 {
   "name": "seatable-plugin-table-info",
-  "version": "0.0.1",
-  "description": "在这个指南中，我们会一步步的演示怎么给 SeaTable 写一个扩展。",
+  "version": "0.0.2",
+  "description": "In this guide, we will show step by step how to write a SeaTable plugin.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/seatable/seatable-plugin-table-info.git"
@@ -11,7 +11,7 @@
   },
   "homepage": "https://github.com/seatable/seatable-plugin-table-info#readme",
   "dependencies": {
-    "dtable-utils": "4.3.2-beta.1",
+    "dtable-utils": "4.3.3",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-intl-universal": "^2.2.2",
