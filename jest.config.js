@@ -1,49 +1,52 @@
-const path = require('path');
-
 module.exports = {
-  "roots": [
-    "<rootDir>/src"
+  roots: [
+    '<rootDir>/tests/',
   ],
-  "collectCoverageFrom": [
-    "src/**/*.{js,jsx,ts,tsx}",
-    "!src/**/*.d.ts"
+  collectCoverageFrom: [
+    'tests/**/*.{js,jsx,ts,tsx}',
+    '!tests/**/*.d.ts',
   ],
-  "setupFiles": [
-    "react-app-polyfill/jsdom"
+  setupFiles: [
+    'react-app-polyfill/jsdom',
   ],
-  "testMatch": [
-    "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
-    "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
+  setupFilesAfterEnv: [
+    '<rootDir>/tests/setupTests.js',
   ],
-  "testEnvironment": "jest-environment-jsdom-fourteen",
-  "transform": {
-    "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
-    "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
-    "^(?!.*\\.(js|jsx|ts|tsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+  testMatch: [
+    '<rootDir>/tests/**/__tests__/**/*.{js,jsx,ts,tsx}',
+    '<rootDir>/tests/**/*.{spec,test}.{js,jsx,ts,tsx}',
+  ],
+  testEnvironment: 'jsdom',
+  transform: {
+    '^.+\\.(js|jsx|mjs|cjs|ts|tsx)$': '<rootDir>/config/jest/babelTransform.js',
+    '^.+\\.css$': '<rootDir>/config/jest/cssTransform.js',
+    '^(?!.*\\.(js|jsx|mjs|cjs|ts|tsx|css|json)$)': '<rootDir>/config/jest/fileTransform.js',
   },
-  "transformIgnorePatterns": [
-    "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$",
-    "^.+\\.module\\.(css|sass|scss)$"
+  transformIgnorePatterns: [
+    '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$',
+    '^.+\\.module\\.(css|sass|scss)$',
   ],
-  "modulePaths": [],
-  "moduleNameMapper": {
-    "^react-native$": "react-native-web",
-    "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
+  modulePaths: [],
+  moduleNameMapper: {
+    '^react-native$': 'react-native-web',
+    '^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
+    '^axios$': require.resolve('axios'),
   },
-  "moduleFileExtensions": [
-    "web.js",
-    "js",
-    "web.ts",
-    "ts",
-    "web.tsx",
-    "tsx",
-    "json",
-    "web.jsx",
-    "jsx",
-    "node"
+  moduleFileExtensions: [
+    'web.js',
+    'js',
+    'web.ts',
+    'ts',
+    'web.tsx',
+    'tsx',
+    'json',
+    'web.jsx',
+    'jsx',
+    'node',
   ],
-  "watchPlugins": [
-    "jest-watch-typeahead/filename",
-    "jest-watch-typeahead/testname"
-  ]
+  watchPlugins: [
+    'jest-watch-typeahead/filename',
+    'jest-watch-typeahead/testname',
+  ],
+  resetMocks: true,
 };
