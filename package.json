@@ -1,6 +1,6 @@
 {
   "name": "seatable-plugin-table-info",
-  "version": "1.0.4",
+  "version": "4.3.0",
   "description": "In this guide, we will show step by step how to write a SeaTable plugin.",
   "repository": {
     "type": "git",
