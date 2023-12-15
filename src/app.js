@@ -39,23 +39,23 @@ class App extends React.Component {
 
   onDTableConnect = () => {
     this.resetData();
-  }
+  };
 
   onDTableChanged = () => {
     this.resetData();
-  }
+  };
 
   resetData = () => {
     this.setState({
       isLoading: false,
       showDialog: true
     });
-  }
+  };
 
   onPluginToggle = () => {
     this.setState({showDialog: false});
     window.app.onClosePlugin();
-  }
+  };
 
   render() {
     let { isLoading, showDialog } = this.state;
