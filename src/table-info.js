@@ -6,7 +6,7 @@ class TableInfo extends React.Component {
 
   getTablesNumber = (tables) => {
     return (tables && Array.isArray(tables)) ? tables.length : 0;
-  }
+  };
 
   getRecords = (tables) => {
     let recordsNumber = 0;
@@ -19,7 +19,7 @@ class TableInfo extends React.Component {
       }
     }
     return recordsNumber;
-  }
+  };
 
   renderCollaborators = (collaborators) => {
     if (!collaborators || !Array.isArray(collaborators)) {
@@ -35,7 +35,7 @@ class TableInfo extends React.Component {
         </div>
       );
     });
-  }
+  };
 
   render() {
     const { tables, collaborators } = this.props;
@@ -58,7 +58,7 @@ const propTypes = {
 TableInfo.defaultProps = {
   tables: [],
   collaborators: [],
-}
+};
 
 TableInfo.propTypes = propTypes;
 
