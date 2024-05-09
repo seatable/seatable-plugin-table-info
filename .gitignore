@@ -25,3 +25,4 @@ yarn-error.log*
 
 # plugin-zip
 /plugin-zip
+src/setting.local.js
