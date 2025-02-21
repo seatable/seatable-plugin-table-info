@@ -24,10 +24,6 @@ class App extends React.Component {
     this.initPluginDTableData();
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({showDialog: nextProps.showDialog});
-  }
-
   async initPluginDTableData() {
     if (this.props.isDevelopment) {
       // local develop
