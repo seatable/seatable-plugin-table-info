@@ -44,9 +44,5 @@ module.exports = {
     'jsx',
     'node',
   ],
-  watchPlugins: [
-    'jest-watch-typeahead/filename',
-    'jest-watch-typeahead/testname',
-  ],
   resetMocks: true,
 };
