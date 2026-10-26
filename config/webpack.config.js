@@ -27,8 +27,6 @@ const ForkTsCheckerWebpackPlugin =
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 
-const createEnvironmentHash = require('./webpack/persistentCache/createEnvironmentHash');
-
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 
@@ -229,19 +227,6 @@ module.exports = function (webpackEnv) {
         : isEnvDevelopment &&
           (info => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')),
     },
-    // cache: {
-    //   type: 'filesystem',
-    //   version: createEnvironmentHash(env.raw),
-    //   cacheDirectory: paths.appWebpackCache,
-    //   store: 'pack',
-    //   buildDependencies: {
-    //     defaultWebpack: ['webpack/lib/'],
-    //     config: [__filename],
-    //     tsconfig: [paths.appTsConfig, paths.appJsConfig].filter(f =>
-    //       fs.existsSync(f)
-    //     ),
-    //   },
-    // },
     infrastructureLogging: {
       level: 'none',
     },
